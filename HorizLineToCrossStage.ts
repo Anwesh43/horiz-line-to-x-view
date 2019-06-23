@@ -212,3 +212,25 @@ class HorizLineToCross {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    hltc : HorizLineToCross = new HorizLineToCross()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.hltc.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.hltc.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.hltc.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
