@@ -29,7 +29,7 @@ class ScaleUtil {
     }
 
     static updateValue(scale : number, dir : number, a : number, b : number) : number {
-        return ScaleUtil.mirrorValue(scale, a, b) * dir
+        return ScaleUtil.mirrorValue(scale, a, b) * dir * scGap
     }
 }
 
